@@ -1,5 +1,5 @@
 @extends('layout')
-@section('content')
+@section('content_category')
 @foreach($product_details as $key => $value)
 
 

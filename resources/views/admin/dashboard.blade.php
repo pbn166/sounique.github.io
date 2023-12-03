@@ -8,6 +8,69 @@
 				    font-weight: bold;
 				}
 			</style>
+    <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{$app_order}}</h3>
+
+                <p>Đơn hàng</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer"> </i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{$app_post}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Bài viết</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer"></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{$customer}}</h3>
+
+                <p>Thành viên</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer"></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{$product}}</h3>
+
+                <p>Sản phầm</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
 <div class="row">
 		<p class="title_thongke">Thống kê đơn hàng doanh số</p>
 
@@ -23,15 +86,15 @@
 
 			<div class="col-md-2">
 				<p>Đến ngày: <input type="text" id="datepicker2" class="form-control"></p>
-			
+
 			</div>
 
 			<div class="col-md-2">
 				<p>
-					Lọc theo: 
+					Lọc theo:
 					<select class="dashboard-filter form-control" >
 						<option>--Chọn--</option>
-						
+
 						<option value="7ngay">7 ngày qua</option>
 						<option value="thangtruoc">tháng trước</option>
 						<option value="thangnay">tháng này</option>
@@ -78,7 +141,7 @@
       <td>{{$visitor_year_count}}</td>
       <td>{{$visitors_total}}</td>
     </tr>
-   
+
   </tbody>
 </table>
 
@@ -88,7 +151,7 @@
 
 	<div class="col-md-4 col-xs-12">
 		<p class="title_thongke">Thống kê tổng sản phẩm bài viết đơn hàng</p>
-		<div id="donut"></div>	
+		<div id="donut"></div>
 	</div>
 
 	<!--------------------------->
@@ -103,7 +166,7 @@
 			</li>
 			@endforeach
 		</ol>
-		
+
 	</div>
 
 	<div class="col-md-4 col-xs-12">

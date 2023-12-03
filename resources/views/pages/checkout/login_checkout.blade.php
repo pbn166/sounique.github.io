@@ -14,6 +14,17 @@
 							    display: inline;
 							    margin: 5px;
 							}
+                            body{
+                    /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+                    background-image: url('/../public/uploads/bg-login.jpg');
+
+                    /* Các thuộc tính sau đây là tùy chọn để tùy chỉnh hiển thị của hình ảnh */
+                    background-size: cover; /* Phù hợp kích thước hình ảnh với phần tử */
+                    background-position: center; /* Canh chỉnh vị trí hiển thị hình ảnh */
+                    /* Nếu bạn muốn lặp lại hình ảnh, bạn có thể sử dụng: */
+                    /* background-repeat: repeat; */
+}
+
 
 						</style>
 
@@ -268,6 +279,7 @@ input::placeholder {
   margin-bottom: 15px;
   /* font-size: 1.66rem; */
   line-height: 1em;
+  font-weight: 500;
 }
 
 .user_unregistered-text,
@@ -314,8 +326,7 @@ input::placeholder {
 .user_options-forms .user_forms-login {
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
-.user_options-forms .forms_title {
-    .user_options-forms .forms_title {
+.user_options-forms .forms_title  {
     margin-bottom: 15px;
     /* font-size: 2rem; */
     font-weight: 600;
@@ -325,7 +336,7 @@ input::placeholder {
     letter-spacing: 0.1rem;
     text-align: center;
 }
-}
+
 .user_options-forms .forms_field:not(:last-of-type) {
   margin-bottom: 20px;
 }
@@ -345,9 +356,12 @@ input::placeholder {
 }
 .user_options-forms .forms_buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 35px;
+}
+.user_unregistered-title h2 {
+    font-weight:500
 }
 .user_options-forms .forms_buttons-forgot {
   /* font-family: "Montserrat", sans-serif; */
@@ -370,6 +384,8 @@ input::placeholder {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  display: flex;
+  justify-content: center;
   transition: background-color 0.2s ease-in-out;
 }
 .user_options-forms .forms_buttons-action:hover {
@@ -385,11 +401,17 @@ input::placeholder {
   visibility: hidden;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out;
 }
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
 .user_options-forms .user_forms-signup {
   transform: translate3d(120px, 0, 0);
 }
 .user_options-forms .user_forms-signup .forms_buttons {
-  justify-content: flex-end;
+  justify-content: center;
+
 }
 .user_options-forms .user_forms-login {
   transform: translate3d(0, 0, 0);
@@ -429,7 +451,11 @@ input::placeholder {
     flex-direction: column;
   }
   .user_options-forms .user_forms-login .forms_buttons-action {
-    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
   }
   .user_options-forms .user_forms-signup,
 .user_options-forms .user_forms-login {

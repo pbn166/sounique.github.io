@@ -74,8 +74,12 @@ a#scrollUp {
 a#scrollUp i{
   font-size: 30px;
 }
-
-
+.filter-price {
+    margin-top: 5px;
+}
+.single-shorter .btn {
+    margin-top: 5px;
+}
 /*************************
 *******Header CSS******
 **************************/
@@ -854,18 +858,20 @@ h2.title:before{
 
 .features_items{
 	overflow:hidden;
+    padding-bottom: 40px;
 }
 
 
 h2.title {
   color: #FE980F;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   font-size: 18px;
   font-weight: 700;
   margin: 0 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
   position: relative;
+  padding-top: 30px;
 }
 
 .product-image-wrapper{

@@ -1,5 +1,5 @@
-<div class="col-sm-3">
-  <div class="left-sidebar">
+<div class="col-lg-3 col-md-4 col-12">
+<div class="shop-sidebar">
     <div class="brands_products">
       <!--brands_products-->
       <h2>Sản phẩm yêu thích</h2>

@@ -8,28 +8,36 @@ use Session;
 use App\Social;
 use App\SocialCustomers;
 use Socialite;
+use App\Visitors;
 use App\Login;
 use App\Product;
 use App\Video;
 use App\Customer;
-use App\Post;
-use App\Statistic;
-use App\Visitors;
+use App\CategoryProductModel;
+use App\Brand;
+
+
 use Carbon\Carbon;
+
+use App\Post;
+
+
+
+
 
 use Auth;
 use App\Order;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
-use App\Rules\Captcha; 
+use App\Rules\Captcha;
 class AdminController extends Controller
 {
     public function login_google(){
         return Socialite::driver('google')->redirect();
     }
     public function callback_google(){
-        $users = Socialite::driver('google')->stateless()->user(); 
+        $users = Socialite::driver('google')->stateless()->user();
         $authUser = $this->findOrCreateUser($users,'google');
         if($authUser){
             $account_name = Login::where('admin_id',$authUser->user)->first();
@@ -43,7 +51,7 @@ class AdminController extends Controller
             Session::put('admin_id',$account_name->admin_id);
         }
 
-        return redirect('/dashboard')->with('message', 'Đăng nhập Admin thành công');  
+        return redirect('/dashboard')->with('message', 'Đăng nhập Admin thành công');
     }
     public function findOrCreateUser($users, $provider){
         $authUser = Social::where('provider_user_id', $users->id)->first();
@@ -74,7 +82,7 @@ class AdminController extends Controller
 
             $customer_new->save();
             return $customer_new;
-        }           
+        }
 
     }
     public function login_customer_google(){
@@ -85,7 +93,7 @@ class AdminController extends Controller
 
         config( ['services.google.redirect' => env('GOOGLE_CLIENT_URL')] );
 
-        $users = Socialite::driver('google')->stateless()->user(); 
+        $users = Socialite::driver('google')->stateless()->user();
 
         $authUser = $this->findOrCreateCustomer($users, 'google');
 
@@ -102,7 +110,7 @@ class AdminController extends Controller
             Session::put('customer_name',$account_name->customer_name);
         }
 
-        return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản google <span style="color:red">'.$account_name->customer_email.'</span> thành công');  
+        return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản google <span style="color:red">'.$account_name->customer_email.'</span> thành công');
     }
     public function findOrCreateCustomer($users, $provider){
         $authUser = SocialCustomers::where('provider_user_id', $users->id)->first();
@@ -132,7 +140,7 @@ class AdminController extends Controller
 
             $customer_new->save();
             return $customer_new;
-        }           
+        }
 
     }
     public function login_facebook_customer(){
@@ -151,7 +159,7 @@ class AdminController extends Controller
            Session::put('customer_id',$account_name->customer_id);
            Session::put('customer_name',$account_name->customer_name);
 
-           return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản facebook <span style="color:red">'.$account_name->customer_email.'</span> thành công');  
+           return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản facebook <span style="color:red">'.$account_name->customer_email.'</span> thành công');
 
        }elseif($account==NULL){
            $customer_login = new SocialCustomers([
@@ -179,7 +187,7 @@ class AdminController extends Controller
         Session::put('customer_name',$account_new->customer_name);
 
 
-        return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản facebook <span style="color:red">'.$account_new->customer_email.'</span> thành công');      
+        return redirect('/dang-nhap')->with('message', 'Đăng nhập bằng tài khoản facebook <span style="color:red">'.$account_new->customer_email.'</span> thành công');
 
 
     }
@@ -233,7 +241,7 @@ public function callback_facebook(){
         Session::put('admin_id',$admin_login->admin_id);
         return redirect('/dashboard')->with('message', 'Đăng nhập Admin thành công');
 
-    } 
+    }
 
 
 }
@@ -250,7 +258,7 @@ public function AuthLogin(){
         return Redirect::to('dashboard');
     }else{
         return Redirect::to('admin')->send();
-    } 
+    }
 
 
 }
@@ -262,7 +270,7 @@ public function index(){
 public function show_dashboard(Request $request){
     $this->AuthLogin();
         //get ip address
-    $user_ip_address = $request->ip();  
+    $user_ip_address = $request->ip();
 
     $early_last_month = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
 
@@ -275,15 +283,15 @@ public function show_dashboard(Request $request){
     $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
 
         //total last month
-    $visitor_of_lastmonth = Visitors::whereBetween('date_visitor',[$early_last_month,$end_of_last_month])->get(); 
+    $visitor_of_lastmonth = Visitors::whereBetween('date_visitor',[$early_last_month,$end_of_last_month])->get();
     $visitor_last_month_count = $visitor_of_lastmonth->count();
 
         //total this month
-    $visitor_of_thismonth = Visitors::whereBetween('date_visitor',[$early_this_month,$now])->get(); 
+    $visitor_of_thismonth = Visitors::whereBetween('date_visitor',[$early_this_month,$now])->get();
     $visitor_this_month_count = $visitor_of_thismonth->count();
 
         //total in one year
-    $visitor_of_year = Visitors::whereBetween('date_visitor',[$oneyears,$now])->get(); 
+    $visitor_of_year = Visitors::whereBetween('date_visitor',[$oneyears,$now])->get();
     $visitor_year_count = $visitor_of_year->count();
 
         //total visitors
@@ -291,7 +299,7 @@ public function show_dashboard(Request $request){
     $visitors_total = $visitors->count();
 
         //current online
-    $visitors_current = Visitors::where('ip_address',$user_ip_address)->get();  
+    $visitors_current = Visitors::where('ip_address',$user_ip_address)->get();
     $visitor_count = $visitors_current->count();
 
     if($visitor_count<1){
@@ -301,7 +309,7 @@ public function show_dashboard(Request $request){
         $visitor->save();
     }
 
-        //total 
+        //total
     $product = Product::all()->count();
     $post = Post::all()->count();
     $order = Order::all()->count();
@@ -421,7 +429,7 @@ public function filter_by_date(Request $request){
         );
     }
 
-    echo $data = json_encode($chart_data);  
+    echo $data = json_encode($chart_data);
 
 }
 public function order_date(Request $request){
@@ -432,7 +440,7 @@ public function order_date(Request $request){
 public function dashboard(Request $request){
         //$data = $request->all();
     $data = $request->validate([
-            //validation laravel 
+            //validation laravel
         'admin_email' => 'required',
         'admin_password' => 'required',
             'g-recaptcha-response' => new Captcha(),    //dòng kiểm tra Captcha
@@ -463,3 +471,4 @@ public function logout(){
     return Redirect::to('/admin');
 }
 }
+

@@ -270,12 +270,12 @@ public function product_tabs(Request $request){
                                 </a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#xemnhanh" onclick="XemNhanh(this.id);"  id="'.$val->product_id.'"  value="Xem nhanh"   title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist"id="'.$val->product_id.'" onclick="add_wistlist(this.id);" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" onclick="add_compare('.$val->product_id.')"href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+										<a data-toggle="modal" data-target="#xemnhanh" onclick="XemNhanh(this.id);"  id="'.$val->product_id.'"  value="Xem nhanh"   title="Xem nhanh" href="#"><i class=" ti-eye"></i><span>Xem nhanh</span></a>
+										<a title="Yêu thích"id="'.$val->product_id.'" onclick="add_wistlist(this.id);" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+										<a title="So sánh" onclick="add_compare('.$val->product_id.')"href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 									</div>
 									<div class="product-action-2">
-										<a title="Add to cart" href="#"  id="'.$val->product_id.'" onclick="Addtocart(this.id);">Add to cart</a>
+										<a title="Thêm giỏ hàng" href="#"  id="'.$val->product_id.'" onclick="Addtocart(this.id);">Add to cart</a>
 									</div>
 								</div>
                             </div>
@@ -287,10 +287,6 @@ public function product_tabs(Request $request){
                             </div>
                         </div>
 						<!-- End Single Product -->
-
-
-
-
 
 
 

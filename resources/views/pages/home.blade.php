@@ -80,7 +80,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">So sánh sản phẩm</h5>
+                              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -89,12 +89,12 @@
                               <table class="table table-striped" id="row_compare">
                                     <thead>
                                       <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">View</th>
-                                        <th scope="col">Management</th>
+                                        <!-- <th scope="col">#</th> -->
+                                        <th scope="col">Tên sản phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Hình ảnh</th>
+                                        <th scope="col">Chi tiết</th>
+                                        <th scope="col">Hành động</th>
                                       </tr>
                                     </thead>
                                     <tbody>

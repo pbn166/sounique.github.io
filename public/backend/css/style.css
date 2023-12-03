@@ -13,8 +13,17 @@ html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
     overflow-x: hidden;
-    background: url(../images/bg.jpg) no-repeat 0px 0px;
+    /* background: url(../images/bg-login.jpg) no-repeat 0px 0px; */
 	background-size:cover;
+    /* opacity: 80%; */
+}
+ html, body .log-w3{
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    overflow-x: hidden;
+    background: url(../images/bg-login.jpg) no-repeat 0px 0px;
+	background-size:cover;
+    opacity: 80%;
 }
 body a{
 	transition: 0.5s all ease;
@@ -25,7 +34,7 @@ body a{
 	text-decoration:none;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0;
 }
 p{
 	margin:0;
@@ -38,12 +47,55 @@ body a:hover{
 	text-decoration:none;
 }
 
+
+
+.small-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    }
+    .bg-info, .bg-info>a {
+        color: #fff!important;
+    }
+    .small-box>.inner {
+        padding: 25px;
+    }
+    .bg-info {
+        background-color: #17a2b8!important;
+    }
+   .small-box>.small-box-footer {
+        background: rgba(0,0,0,.1);
+        color: rgba(255,255,255,.8);
+        display: block;
+        padding: 3px 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        z-index: 10;
+    }
+    .small-box .icon {
+        color: rgba(0,0,0,.15);
+        z-index: 0;
+    }
+    .small-box .icon>i.ion {
+        font-size: 70px;
+        top: 20px;
+    }
+    .small-box .icon>i {
+        font-size: 90px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        transition: all .3s linear;
+    }
 	/*sidebar navigation*/
 #sidebar {
     width:240px;
     height:100%;
     position:fixed;
-    background:rgba(52, 48, 48, 0.78);
+    background:rgba(24, 23, 23, 0.9);
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -136,7 +188,7 @@ ul.sidebar-menu li ul.sub li {
     margin-right:0;
 }
 ul.sidebar-menu li ul.sub li a {
-    font-size:12px;
+    font: size 14px;
     padding-top:13px;
     padding-bottom:13px;
     -webkit-transition:all 0.3s ease;
@@ -173,7 +225,7 @@ ul.sidebar-menu li a {
     text-decoration:none;
     display:block;
     padding:18px 0 18px 25px;
-    font-size:12px;
+    font-size:14px;
     outline:none;
     -webkit-transition:all 0.3s ease;
     -moz-transition:all 0.3s ease;
@@ -203,7 +255,7 @@ ul.sidebar-menu li a.active i {
 }
 .mail-info,.mail-info:hover {
     margin:-3px 6px 0 0;
-    font-size: 11px;
+    font-size: 14px;
 }
 /*main content*/
 #main-content {
@@ -251,7 +303,7 @@ ul.sidebar-menu li a.active i {
     width:100%;
 }
 .brand {
-    background:#8b5c7e;
+    background:#080708;
     float:left;
     width:240px;
     height:80px;
@@ -328,7 +380,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     height:21px;
     padding:5px;
     width:22px;
-    font-size:12px;
+    font-size:14px;
     margin-right:10px;
 }
 .dropdown-menu.extended .alert-icon,.noti-info {
@@ -391,7 +443,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .dropdown-menu.tasks-bar .task-info .desc h5 {
     color:#32323a;
     text-transform:uppercase;
-    font-size:12px;
+    font-size:14px;
     font-weight:600;
     margin-bottom:5px;
     margin-top:0;
@@ -796,7 +848,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     padding: 0 16px;
     background:#ddede0;
    border-top-right-radius: 2px;
-   border-top-left-radius: 2px; 
+   border-top-left-radius: 2px;
     text-transform: uppercase;
     text-align: center;
 }
@@ -869,7 +921,7 @@ span.panel-title{
 .notification-info p {
     margin: 0px;
     color: #999;
-    font-size: 12px;
+    font-size: 14px;
 }
 .notification-meta {
     margin-bottom: 3px;
@@ -1027,8 +1079,8 @@ div#graph1,div#graph4,div#graph5,div#graph6,div#graph7,div#graph8,div#graph9 {
 }
 .progress .bar {
 		z-index: 2;
-		height:15px; 
-		font-size: 12px;
+		height:15px;
+		font-size: 14px;
 		color: white;
 		text-align: center;
 		float:left;
@@ -1043,19 +1095,19 @@ div#graph1,div#graph4,div#graph5,div#graph6,div#graph7,div#graph8,div#graph9 {
 	}
 .progress-striped .yellow{
 	background:#f0ad4e;
-} 
+}
 .progress-striped .green{
 	background:#5cb85c;
-} 
+}
 .progress-striped .light-blue{
 	background:#4F52BA;
-} 
+}
 .progress-striped .red{
 	background:#d9534f;
-} 
+}
 .progress-striped .blue{
 	background:#428bca;
-} 
+}
 .progress-striped .orange {
 	background:#e94e02;
 }
@@ -1192,7 +1244,7 @@ h4.title {
     -ms-transition: 0.5s all;
     -moz-transition: 0.5s all;
     cursor: pointer;
-} 
+}
 .icon-box:hover {
     background: #000;
 	transition:0.5s all;
@@ -1211,11 +1263,11 @@ h4.title {
     float: left;
     width: 12.5%;
     height: 115px;
-    padding: 10px; 
+    padding: 10px;
     line-height: 1.4;
-    text-align: center;  
-    font-size: 12px;
-    list-style-type: none;	
+    text-align: center;
+    font-size: 14px;
+    list-style-type: none;
 }
 .codes .bs-glyphicons .glyphicon {
     margin-top: 5px;
@@ -1233,7 +1285,7 @@ h4.title {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .codes .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1269,7 +1321,7 @@ h3.agileits-icons-title {
     padding: 10px;
     line-height: 1.4;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     list-style-type: none;
     background:rgba(149, 149, 149, 0.18);
     margin: 1%;
@@ -1291,7 +1343,7 @@ h3.agileits-icons-title {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1403,12 +1455,12 @@ li.list-group-item1 {
 }
 .grid_4{
 	background:none;
-	
+
 }
 .label {
 	font-weight: 300 !important;
 	border-radius:4px;
-}  
+}
 .grid_5{
 	background:none;
 	padding:2em 0;
@@ -2367,7 +2419,7 @@ ul.inbox-pagination li {
 }
 /*-- gallery --*/
 .w3layouts-main h2 {
-	color: #8b5c7e;
+	color: #110f11;
     font-size: 29px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -2377,7 +2429,7 @@ ul.inbox-pagination li {
 .w3layouts-main {
     width: 30%;
     margin:5em auto;
-    background:rgba(171, 119, 157, 0.27);
+    background:rgba(244, 248, 248, 0.77);
     padding: 42px 35px;
 }
 /*--//header--*/
@@ -2388,13 +2440,13 @@ input.ggg{
     border: 1px solid #fff;
     outline: none;
     font-size: 14px;
-    color: #fff;
+    color: #2d2b2b;
     margin: 14px 0px;
 	background: none;
 }
 .w3layouts-main span {
     font-size: 16px;
-    color: #fff;
+    color: #1a1818;
     float: left;
     width: 32%;
 	margin-top: 8px;
@@ -2403,13 +2455,13 @@ input.ggg{
     font-size: 16px;
     float: right;
     width: 37%;
-	color: #fff;
+	color: #121010;
     letter-spacing: 1px;
 	margin-top: 8px;
-	text-decoration:underline;
+	/* text-decoration:underline; */
 }
 .w3layouts-main a {
-    color: #fff;
+    color: #212020;
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-o-transition:0.5s all;
@@ -2417,7 +2469,7 @@ input.ggg{
 	-ms-transition:0.5s all;
 }
 .w3layouts-main a:hover{
-	color:#f0bcb4;
+	color:#f4930b;
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-o-transition:0.5s all;
@@ -2429,7 +2481,7 @@ input.ggg{
     font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: #f0bcb4;
+    background: #000000;
     color: white;
     border: none;
     outline: none;
@@ -2443,7 +2495,7 @@ input.ggg{
     -ms-transition: 0.5s all;
 }
 .w3layouts-main input[type="submit"]:hover {
-	background:#8b5c7e;
+	background:#da8c07;
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-o-transition:0.5s all;
@@ -2477,12 +2529,12 @@ h4 input[type="checkbox"] {
 	color:#fff !important;
 }
 :-moz-placeholder { /* Firefox 18- */
-	color:#fff !important; 
+	color:#fff !important;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
 	color:#fff !important;
 }
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
 	color:#fff !important;
 }
 /*--//placeholder-color--*/

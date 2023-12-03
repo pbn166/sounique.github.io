@@ -1,11 +1,11 @@
 @extends('layout')
-@section('content')
+@section('content_category')
     <div class="table-agile-info">
     <div class="panel panel-default">
     <div class="panel-heading">
       Liệt kê tất cả đơn hàng
     </div>
-  
+
     <div class="table-responsive">
                       <?php
                             $message = Session::get('message');
@@ -17,7 +17,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-           
+
             <th>Thứ tự</th>
             <th>Mã đơn hàng</th>
             <th>Ngày tháng đặt hàng</th>
@@ -27,18 +27,18 @@
           </tr>
         </thead>
         <tbody>
-          @php 
+          @php
           $i = 0;
           @endphp
           @foreach($getorder as $key => $ord)
-            @php 
+            @php
             $i++;
             @endphp
           <tr>
             <td><i>{{$i}}</i></label></td>
             <td>{{ $ord->order_code }}</td>
             <td>{{ $ord->created_at }}</td>
-            
+
             <td>@if($ord->order_status==1)
                    <span class="text text-success">Đơn hàng mới</span>
                 @elseif($ord->order_status==2)
@@ -47,8 +47,8 @@
                   <span class="text text-danger">Đơn hàng đã bị hủy</span>
                 @endif
             </td>
-           
-           
+
+
             <td>
               @if($ord->order_status!=3)
               <!-- Trigger the modal with a button -->
@@ -92,18 +92,18 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
+
         <div class="col-sm-5 text-center">
          {{--  <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small> --}}
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
+        <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
             {!!$getorder->links()!!}
           </ul>
         </div>
       </div>
     </footer>
-   
+
   </div>
 </div>
 @endsection

@@ -65,10 +65,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'namkunka99@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'shopbanhanglaravel'),
+        'address' => env('MAIL_FROM_ADDRESS', 'pahnp.anhi@gmail.comcom'),
+        'name' => env('MAIL_FROM_NAME', 'Sounique Store'),
     ],
-    
+
 
     /*
     |--------------------------------------------------------------------------

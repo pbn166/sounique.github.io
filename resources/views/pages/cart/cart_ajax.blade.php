@@ -42,11 +42,11 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>PRODUCT</th>
-								<th>NAME</th>
-								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">QUANTITY</th>
-								<th class="text-center">TOTAL</th>
+								<th>Hình ảnh</th>
+								<th>Tên sản phẩm</th>
+								<th class="text-center">Giá</th>
+								<th class="text-center">Số lượng</th>
+								<th class="text-center">Thành tiền</th>
 								<th class="text-center"><a href="{{url('/del-all-product')}}"><i class="ti-trash remove-icon"></i> </a></th>
 							</tr>
 						</thead>

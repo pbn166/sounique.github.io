@@ -27,7 +27,7 @@ class CartController extends Controller
 
         $output = '';
         if($cart>0){
-           
+
             $output.='<ul class="hover-cart">';
                                     foreach(Session::get('cart') as $key => $value){
                                         $output.='<li><a href="#">
@@ -41,16 +41,16 @@ class CartController extends Controller
                                         </a></p>
 
                                         </li>';
-                                     }  
-            $output.='</ul>'; 
+                                     }
+            $output.='</ul>';
 
         }
         // elseif($cart==''){
         //     $output.='<ul class="hover-cart">
         //                                 <li><p>Giỏ hàng trống</p></li>
-        //                             </ul>'; 
+        //                             </ul>';
         // }
-       
+
         echo $output;
     }
     public function check_coupon(Request $request){
@@ -134,21 +134,21 @@ class CartController extends Controller
 
     }
 
-}   
+}
 public function gio_hang(Request $request){
          //category post
     $category_post = CatePost::orderBy('cate_post_id','DESC')->get();
-         //seo 
+         //seo
          //slide
     $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
 
-    $meta_desc = "Giỏ hàng của bạn"; 
+    $meta_desc = "Giỏ hàng của bạn";
     $meta_keywords = "Giỏ hàng Ajax";
     $meta_title = "Giỏ hàng Ajax";
     $url_canonical = $request->url();
         //--seo
-    $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
-    $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+    $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+    $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get();
 
     return view('pages.cart.cart_ajax')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider)->with('category_post',$category_post);
 }
@@ -192,7 +192,7 @@ public function add_cart_ajax(Request $request){
 
     Session::save();
 
-}   
+}
 public function show_quick_cart(){
     $output ='
     <form>
@@ -216,10 +216,10 @@ public function show_quick_cart(){
 
                         foreach(Session::get('cart') as $key => $cart){
 
-                            
+
                             $subtotal = $cart['product_price']*$cart['product_qty'];
                             $total+=$subtotal;
-                            
+
 
                         $output.='<tr>
                             <td class="">
@@ -238,49 +238,73 @@ public function show_quick_cart(){
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                
+
                                 <input class="cart_qty_update" type="number" data-session_id="'.$cart['session_id'].'" min="1" value="'.$cart['product_qty'].'" >
-                                
-                                    
+
+
                                 </div>
                             </td>
                             <td class="cart_total">
                                 <p class="cart_total_price">
-                                    '.number_format($cart['product_price'],0,',','.').'VNĐ
-                                    
+
+
                                 </p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" style="cursor:pointer" id="'.$cart['session_id'].'" onclick="DeleteItemCart(this.id)">
+                                <a class="cart_quantity_delete" style="cursor:pointer"\">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
                         </tr>';
-                       } 
-                       
+
+                       }
+
+                       $output.='<tr>
+                       <td class="">
+                           <img src="" />
+                       </td>
+                       <td class="cart_description">
+                           <h4><a href=""></a></h4>
+                           <p></p>
+                       </td>
+                       <td class="cart_description">
+                           <h4><a href="">TỔNG:</a></h4>
+                           <p></p>
+                       </td>
+                       <td class="cart_price">
+                           <p style="font-size:18px;color:orange"> '.number_format($total,0,',','.').'VNĐ</p>
+                       </td>
+                       <td class="cart_quantity">
+
+                       </td>
+                       <td class="cart_total">
+
+                       </td>
+                       <td class="cart_delete">
+
+                       </td>
+                   </tr>';
+
                         $output.='<tr>
-                          
+
                             <td><a class="btn btn-default check_out" href="'.url('/del-all-product').'">Xóa tất cả</a></td>
-                           
+
 
                             <td>';
 
 
                                 if(Session::get('customer_id')){
-                                    $output.='<a class="btn btn-default check_out" href="'.url('/checkout').'">Đặt hàng</a>';
+                                    $output.='<a class="btn" href="'.url('/checkout').'">Đặt hàng</a>';
                                 }else{
-                                    $output.='<a class="btn btn-default check_out" href="'.url('/dang-nhap').'">Đặt hàng</a>';
-                                
+                                    $output.='<a class="btn btn-secondary check_out" href="'.url('/dang-nhap').'">Đặt hàng</a>';
+
                                 }
 
                             $output.='</td>
 
-                            
-                            <td colspan="2">
-                            <li>Tổng tiền :<span>'.number_format($total,0,',','.').'VNĐ</span></li>
-                           
-                            
-                            
+
+
+
                         </td>
                         </tr>';
 
@@ -296,8 +320,8 @@ public function show_quick_cart(){
 
                    $output.='</tbody>
 
-                
-                  
+
+
 
                 </table></form>';
 
@@ -323,12 +347,12 @@ public function delete_product($session_id){
 
 }
 public function cart_session(){
-   
+
     $output ='';
-    
+
     if(Session::get('cart')==true){
         foreach(Session::get('cart') as $key => $value){
-           
+
             $output.= '<input type="hidden" class="cart_id" value="'.$value['product_id'].'">';
         }
     }
@@ -337,7 +361,7 @@ public function cart_session(){
 public function remove_item(Request $request){
     $data = $request->all();
     $cart = Session::get('cart');
-       
+
     if($cart==true){
 
         foreach($cart as $key => $val){
@@ -345,9 +369,9 @@ public function remove_item(Request $request){
                 unset($cart[$key]);
             }
         }
-        
+
         Session::put('cart',$cart);
-    
+
     }
 
 }
@@ -395,7 +419,7 @@ public function update_quick_cart(Request $request){
             }
 
         Session::put('cart',$cart);
-       
+
     }
 }
 
@@ -411,9 +435,9 @@ public function delete_all_product(){
 public function save_cart(Request $request){
     $productId = $request->productid_hidden;
     $quantity = $request->qty;
-    $product_info = DB::table('tbl_product')->where('product_id',$productId)->first(); 
+    $product_info = DB::table('tbl_product')->where('product_id',$productId)->first();
 
-    
+
         // Cart::add('293ad', 'Product 1', 1, 9.99, 550);
         // Cart::destroy();
     $data['id'] = $product_info->product_id;
@@ -429,14 +453,14 @@ public function save_cart(Request $request){
 
 }
 public function show_cart(Request $request){
-        //seo 
-    $meta_desc = "Giỏ hàng của bạn"; 
+        //seo
+    $meta_desc = "Giỏ hàng của bạn";
     $meta_keywords = "Giỏ hàng";
     $meta_title = "Giỏ hàng";
     $url_canonical = $request->url();
         //--seo
-    $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
-    $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+    $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+    $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get();
     return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
 }
 public function delete_to_cart($rowId){

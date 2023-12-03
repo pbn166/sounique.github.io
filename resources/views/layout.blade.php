@@ -131,7 +131,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="{{URL::to('/trang-chu')}}"><img src="./public/uploads/logo/1.png" alt="logo" ></a>
+							<a href="{{URL::to('/trang-chu')}}"><img src="./public/uploads/logo/8.png" alt="logo" ></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -156,7 +156,7 @@
 								<form action="{{URL::to('/tim-kiem')}}" autocomplete="off" method="POST">
                                 {{csrf_field()}}
                                     <input type="text"name="keywords_submit" id="keywords" class="form-control" placeholder="Search Products Here....." >
-									<div id="search_ajax" class="smart-search-wrapper"></div>
+									<div id="search_ajax" class="smart-search-wrapper" ></div>
                                     <button  type="submit" name="search_items" class="btnn"><i class="ti-search"></i></button>
 								</form>
 							</div>
@@ -177,27 +177,16 @@
 
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
+										<span>Sản phẩm</span>
+										<a href="#">Xem giỏ hàng</a>
 									</div>
 									<ul class="giohang-hover">
-										<li class="cart-hover">
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li class="cart-hover">
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+
 									</ul>
 									<div class="bottom">
 										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span>Tổng tiền</span>
+											<span class="total-amount">{{Cart::total().' '.'vnđ'}}</span>
 										</div>
                                          <?php
                                             $customer_id = Session::get('customer_id');
@@ -325,16 +314,6 @@
 
 
     </header><!--/header-->
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -860,6 +839,7 @@
                 var name = data[i].name;
                 var price = data[i].price;
                 var image = data[i].image;
+                // var description = data[i].description;
                 var url = data[i].url;
                 var id = data[i].id;
 
@@ -868,7 +848,7 @@
                                                             <td>`+name+`</td>
                                                             <td>`+price+`</td>
                                                             <td><img width="200px" src="`+image+`"></td>
-                                                            <td></td>
+
                                                             <td><a href="`+url+`">Xem sản phẩm</a></td>
                                                             <td><a style="cursor:pointer" onclick="delete_compare(`+id+`)">Xóa so sánh</a></td>
                                                           </tr>

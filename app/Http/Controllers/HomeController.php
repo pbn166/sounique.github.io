@@ -41,7 +41,7 @@ class HomeController extends Controller
 
 
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-            <div class="product-image-wrapper">
+
                 <!-- Các input hidden ở đây -->
 
                 <input type="hidden" value="'.$pro->product_id.'" class="cart_product_id_'.$pro->product_id.'">
@@ -70,23 +70,24 @@ class HomeController extends Controller
                             <div class="button-head">
                                 <!-- Các nút action ở đây -->
                                 <div class="product-action">
-										<a data-toggle="modal" data-target="#xemnhanh" onclick="XemNhanh(this.id);"  value="Xem nhanh"  id="'.$pro->product_id.'" title="Quick View" href="#"><i class=" ti-eye"></i><span>Xem nhanh</span></a>
-										<a title="Wishlist"  id="'.$pro->product_id.'" onclick="add_wistlist(this.id);" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-										<a title="Compare" onclick="add_compare('.$pro->product_id.')" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
+										<a data-toggle="modal" data-target="#xemnhanh" onclick="XemNhanh(this.id);"  value="Xem nhanh"  id="'.$pro->product_id.'" title="Xem nhanh" href="#"><i class=" ti-eye"></i><span>Xem nhanh</span></a>
+										<a title="Yêu thích"  id="'.$pro->product_id.'" onclick="add_wistlist(this.id);" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+										<a title="So sánh" onclick="add_compare('.$pro->product_id.')" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 									</div>
 									<div class="product-action-2">
 										<a title="Mua hàng" href="#"  id="'.$pro->product_id.'" onclick="Addtocart(this.id);">Thêm giỏ hàng</a>
 									</div>
 								</div>
                             </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
+                            <div class="product-content">
                             <h3>'.$pro->product_name.'</h3>
                             <div class="product-price">
                                 <span>'.number_format($pro->product_price,0,',','.').'VNĐ</span>
                             </div>
                         </div>
+                            </div>
+                        </div>
+
                     </div>
                 </a>
             </div>
@@ -95,23 +96,10 @@ class HomeController extends Controller
 </div>';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
              $output .= '
                 <div id="load_more">
-                    <button type="button" name="load_more_button" class="btn btn-primary form-control" data-id="'.$last_id.'" id="load_more_button">Load thêm sản phẩm
+                    <button type="button" name="load_more_button" class="btn btn-primary form-control" data-id="'.$last_id.'" id="load_more_button">Xem thêm sản phẩm
                     </button>
                 </div>
             ';
@@ -226,4 +214,20 @@ class HomeController extends Controller
 
 
  }
+ public function send_mail(){
+    //send mail
+           $to_name = "Sounique Store";
+           $to_email = "pahn.anhi@gmail.com";//send to this email
+
+
+           $data = array("name"=>"Mail từ tài khoản Khách hàng","body"=>'Mail gửi về vấn về sản phẩm'); //body of mail.blade.php
+
+           Mail::send('pages.send_mail',$data,function($message) use ($to_name,$to_email){
+
+               $message->to($to_email)->subject('Test thử gửi mail google');//send this mail with subject
+               $message->from($to_email,$to_name);//send from this mail
+           });
+           // return redirect('/')->with('message','');
+           //--send mail
+}
 }
